@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { Trophy, Medal, Star, Globe } from 'lucide-react';
+import { Trophy, Medal, Star, Globe, Share2 } from 'lucide-react';
 import { majorSeasonsTrophies } from '../data';
 import { useState } from 'react';
+import { ShareData } from './ShareModal';
 
 const iconMap: Record<string, React.ElementType> = {
   Trophy,
@@ -10,7 +11,11 @@ const iconMap: Record<string, React.ElementType> = {
   Globe
 };
 
-export default function TrophyGallery() {
+interface TrophyGalleryProps {
+  onShare: (data: ShareData) => void;
+}
+
+export default function TrophyGallery({ onShare }: TrophyGalleryProps) {
   const [activeSeason, setActiveSeason] = useState(majorSeasonsTrophies[0].season);
 
   const activeData = majorSeasonsTrophies.find(s => s.season === activeSeason) || majorSeasonsTrophies[0];
@@ -63,8 +68,22 @@ export default function TrophyGallery() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white/5 rounded-2xl p-6 flex flex-col items-center text-center justify-center border border-white/10 group"
+                  className="bg-white/5 rounded-2xl p-6 flex flex-col items-center text-center justify-center border border-white/10 group relative"
                 >
+                  <button
+                    onClick={() => onShare({
+                      type: 'trophy',
+                      title: trophy.name,
+                      value: trophy.season,
+                      subtitle: `${trophy.competition} Winner`,
+                      icon: trophy.imageIcon
+                    })}
+                    className="absolute top-3 right-3 p-2 text-white/20 hover:text-white bg-white/5 hover:bg-[#d4af37]/20 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+                    title="Share this trophy"
+                  >
+                    <Share2 className="w-4 h-4" />
+                  </button>
+
                   <div className="w-16 h-16 mb-4 rounded-full bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_2px_10px_rgba(255,255,255,0.05)] border border-white/10">
                     <IconComp className="w-8 h-8 text-[#d4af37]" strokeWidth={1.5} />
                   </div>

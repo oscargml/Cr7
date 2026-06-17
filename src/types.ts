@@ -31,3 +31,11 @@ export interface SeasonTrophies {
   club: string;
   trophies: Trophy[];
 }
+
+export interface Milestone {
+  id: string;
+  year: number;
+  title: string;
+  description: string;
+  icon: string;
+}

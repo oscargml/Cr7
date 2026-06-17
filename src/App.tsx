@@ -3,12 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { useState } from 'react';
 import Hero from './components/Hero';
 import StatsOverview from './components/StatsOverview';
 import LeagueHistory from './components/LeagueHistory';
 import TrophyGallery from './components/TrophyGallery';
+import MilestoneTimeline from './components/MilestoneTimeline';
+import ShareModal, { ShareData } from './components/ShareModal';
 
 export default function App() {
+  const [shareData, setShareData] = useState<ShareData | null>(null);
+
+  const handleShare = (data: ShareData) => {
+    setShareData(data);
+  };
+
   return (
     <main className="bg-[#050505] min-h-screen relative overflow-hidden font-sans text-[#e0e0e0]">
       {/* Immersive ambient background */}
@@ -16,9 +25,10 @@ export default function App() {
 
       <div className="relative z-10">
         <Hero />
-        <StatsOverview />
+        <StatsOverview onShare={handleShare} />
+        <MilestoneTimeline onShare={handleShare} />
         <LeagueHistory />
-        <TrophyGallery />
+        <TrophyGallery onShare={handleShare} />
         
         <footer className="mt-8 mb-12 flex items-center gap-4 relative z-10 max-w-6xl mx-auto px-4 md:px-8">
           <div className="text-white/30 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">CR7 Legacy</div>
@@ -26,6 +36,12 @@ export default function App() {
           <div className="text-white/30 text-[10px] font-bold tracking-widest uppercase flex-shrink-0">Unofficial Tribute</div>
         </footer>
       </div>
+
+      <ShareModal 
+        isOpen={shareData !== null} 
+        onClose={() => setShareData(null)} 
+        data={shareData} 
+      />
     </main>
   );
 }

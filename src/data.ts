@@ -129,3 +129,78 @@ export const majorSeasonsTrophies: SeasonTrophies[] = [
     ]
   }
 ];
+
+import { Milestone } from './types.ts';
+
+export const milestones: Milestone[] = [
+  {
+    id: 'first-pro',
+    year: 2002,
+    title: 'First Professional Goal',
+    description: 'Scored his first professional goals (a brace) for Sporting CP against Moreirense.',
+    icon: 'Target'
+  },
+  {
+    id: 'united-transfer',
+    year: 2003,
+    title: 'Manchester Transfer',
+    description: 'Joined Manchester United, becoming the most expensive teenager in English football history.',
+    icon: 'Activity'
+  },
+  {
+    id: 'first-ucl',
+    year: 2008,
+    title: 'First Champions League',
+    description: 'Won his first UEFA Champions League with Manchester United, scoring in the final.',
+    icon: 'Trophy'
+  },
+  {
+    id: 'first-bdo',
+    year: 2008,
+    title: 'First Ballon d\'Or',
+    description: 'Awarded his first Ballon d\'Or, recognizing him as the best player in the world.',
+    icon: 'Star'
+  },
+  {
+    id: 'madrid-transfer',
+    year: 2009,
+    title: 'Record Madrid Transfer',
+    description: 'Transferred to Real Madrid for a then-world record fee of £80 million.',
+    icon: 'Zap'
+  },
+  {
+    id: 'la-decima',
+    year: 2014,
+    title: 'La Decima',
+    description: 'Helped Real Madrid win their 10th European Cup, setting a record of 17 goals in a single UCL season.',
+    icon: 'Trophy'
+  },
+  {
+    id: 'euro-2016',
+    year: 2016,
+    title: 'Euro 2016 Champion',
+    description: 'Captained Portugal to their first-ever major international tournament victory.',
+    icon: 'Globe'
+  },
+  {
+    id: 'fifth-bdo',
+    year: 2017,
+    title: 'Fifth Ballon d\'Or',
+    description: 'Won his fifth Ballon d\'Or, equaling the record at the time.',
+    icon: 'Star'
+  },
+  {
+    id: 'juventus-transfer',
+    year: 2018,
+    title: 'Juventus Transfer',
+    description: 'Moved to Juventus and became the highest goalscorer in football history shortly after.',
+    icon: 'Zap'
+  },
+  {
+    id: 'goal-900',
+    year: 2024,
+    title: '900th Career Goal',
+    description: 'Reached and surpassed the monumental milestone of 900 career goals.',
+    icon: 'Target'
+  }
+];
